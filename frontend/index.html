@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Industrial Machines & Robotics</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0b0d12; --card:#111418; --text:#e5e7eb; --muted:#9ca3af; --accent:#1f6feb; --border:#1f2937; }
+    * { box-sizing: border-box; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; background: var(--bg); color: var(--text); }
+    header { position: sticky; top:0; backdrop-filter: saturate(180%) blur(8px); background: rgba(11,13,18,.7); border-bottom: 1px solid var(--border); }
+    .nav { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; }
+    .logo { font-weight: 700; letter-spacing: .2px; }
+    .hero { max-width: 1100px; margin: 0 auto; padding: 40px 20px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: center; }
+    .hero h1 { font-size: 2.2rem; margin: 0 0 8px; }
+    .hero p { color: var(--muted); margin: 0 0 16px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    .toolbar { display: flex; gap: 12px; align-items: center; margin: 16px 0; }
+    select, input { padding: .5rem .6rem; border: 1px solid var(--border); border-radius: 8px; background: var(--card); color: var(--text); }
+    .btn { display: inline-block; background: var(--accent); color: #fff; padding: .55rem .9rem; border-radius: 10px; text-decoration: none; font-size: .95rem; }
+    #status { margin: 8px 0 16px; font-size: .95rem; color: var(--muted); }
+    .grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px; }
+    .card { background: linear-gradient(180deg, #12161b, #0e1116); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,.25); }
+    .card img { width: 100%; height: 180px; object-fit: cover; }
+    .card .pad { padding: 14px; display: grid; gap: 8px; }
+    .price { font-weight: 600; }
+    .muted { color: var(--muted); font-size: .9rem; }
+    .split { display: flex; gap: 8px; }
+    .panel { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 12px; }
+    .formgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .formgrid .full { grid-column: 1 / -1; }
+  </style>
+  <script defer src="/script.js"></script>
+  </head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">INDUSTRIAL</div>
+      <div class="split">
+        <label class="muted">Category
+          <select id="category"></select>
+        </label>
+        <a href="#cart" id="cartBtn" class="btn">Cart (<span id="cartCount">0</span>)</a>
+      </div>
+    </div>
+  </header>
+  <section class="hero">
+    <div>
+      <h1>Machines & Robotics</h1>
+      <p>Precision hardware for manufacturing, research, and automation.</p>
+      <a href="#browse" class="btn" id="browseBtn">Browse catalog</a>
+    </div>
+    
+  </section>
+  <div class="container">
+    <div id="status">Loading catalog</div>
+    <div id="grid" class="grid"></div>
+    <div id="cartView" style="display:none;" class="panel">
+      <h2>Checkout</h2>
+      <div id="cartItems" class="panel"></div>
+      <div class="panel" style="margin-top:12px;">
+        <div class="formgrid">
+          <input id="customerName" placeholder="Full name" class="full" />
+          <input id="customerEmail" placeholder="Email" class="full" />
+          <input id="customerCompany" placeholder="Company" />
+          <input id="customerPhone" placeholder="Phone" />
+          <input id="customerAddress1" placeholder="Address line 1" class="full" />
+          <input id="customerAddress2" placeholder="Address line 2" class="full" />
+          <input id="customerCity" placeholder="City" />
+          <input id="customerCountry" placeholder="Country" />
+        </div>
+        <div style="margin-top:12px;" class="split">
+          <a href="#checkout" id="checkoutBtn" class="btn">Place order</a>
+          <a href="#back" id="backBtn" class="btn">Back to catalog</a>
+        </div>
+      </div>
+    </div>
+    <div id="paymentView" style="display:none;" class="panel">
+      <h2>Payment</h2>
+      <div class="formgrid">
+        <input id="cardNumber" placeholder="Card number" />
+        <input id="cardName" placeholder="Name on card" />
+        <input id="cardExpiry" placeholder="MM/YY" />
+        <input id="cardCvc" placeholder="CVC" />
+      </div>
+      <div class="split" style="margin-top:12px;">
+        <a href="#pay" id="payBtn" class="btn">Pay</a>
+        <a href="#cancel" id="cancelPayBtn" class="btn">Cancel</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
