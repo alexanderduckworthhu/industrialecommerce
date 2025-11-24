@@ -11,12 +11,12 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'ENV_FILE=.env; [ -f .env ] || ENV_FILE=.env.example; docker compose -f docker-compose.yml --env-file "$ENV_FILE" build'
+        sh 'ENV_FILE=.env; [ -f .env ] || ENV_FILE=.env.example; export ENV_FILE; docker compose -f docker-compose.yml --env-file "$ENV_FILE" build'
       }
     }
     stage('Deploy') {
       steps {
-        sh 'ENV_FILE=.env; [ -f .env ] || ENV_FILE=.env.example; docker compose -f docker-compose.yml --env-file "$ENV_FILE" up -d --remove-orphans'
+        sh 'ENV_FILE=.env; [ -f .env ] || ENV_FILE=.env.example; export ENV_FILE; docker compose -f docker-compose.yml --env-file "$ENV_FILE" up -d --remove-orphans'
       }
     }
     stage('Health Check') {
